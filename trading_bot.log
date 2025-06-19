@@ -1,0 +1,85 @@
+2025-03-03 14:32:40,060 - app.api.smart_api_wrapper - ERROR - Login failed: Invalid totp
+2025-03-03 14:33:12,109 - app.api.smart_api_wrapper - ERROR - Login failed: Invalid totp
+2025-03-03 14:34:37,846 - app.api.smart_api_wrapper - ERROR - Login failed: Invalid totp
+2025-03-03 14:38:28,604 - app.api.smart_api_wrapper - ERROR - Login failed: Invalid totp
+2025-03-03 23:08:16,749 - app.api.smart_api_wrapper - ERROR - Login failed: Invalid totp
+2025-03-04 18:32:10,462 - app.api.smart_api_wrapper - ERROR - Login failed: Invalid totp
+2025-03-04 18:39:15,903 - __main__ - INFO - Starting trading bot with TOTP
+2025-03-04 18:39:15,907 - __main__ - INFO - Starting the trading bot...
+2025-03-04 18:39:15,909 - __main__ - ERROR - Error starting the trading bot: cannot import name 'app' from 'app' (C:\Users\user\Desktop\company projects\smart api trading bot\app\__init__.py)
+2025-03-04 20:05:17,474 - __main__ - INFO - Starting Advanced Trading Bot
+2025-03-04 20:05:17,868 - __main__ - ERROR - Error starting the bot: cannot import name 'init_api' from partially initialized module 'app' (most likely due to a circular import) (C:\Users\user\Desktop\company projects\smart api trading bot\app\__init__.py)
+2025-03-04 20:06:35,562 - __main__ - INFO - Starting Advanced Trading Bot
+2025-03-04 20:06:37,006 - app - ERROR - Error initializing API: numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject
+2025-03-04 20:06:37,042 - werkzeug - INFO -  * Restarting with stat
+2025-03-04 20:06:37,314 - __main__ - INFO - Starting Advanced Trading Bot
+2025-03-04 20:06:38,425 - app - ERROR - Error initializing API: numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject
+2025-03-04 20:06:38,437 - werkzeug - WARNING -  * Debugger is active!
+2025-03-04 20:06:38,449 - werkzeug - INFO -  * Debugger PIN: 256-174-949
+2025-03-04 20:06:39,695 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-03-04 20:06:39,696 - werkzeug - INFO -  * Running on http://192.168.77.64:5000/ (Press CTRL+C to quit)
+2025-03-04 20:07:33,375 - werkzeug - INFO - 192.168.77.64 - - [04/Mar/2025 20:07:33] "GET / HTTP/1.1" 200 -
+2025-03-04 20:07:33,769 - werkzeug - INFO - 192.168.77.64 - - [04/Mar/2025 20:07:33] "GET /api/status HTTP/1.1" 200 -
+2025-03-04 20:07:33,780 - werkzeug - INFO - 192.168.77.64 - - [04/Mar/2025 20:07:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-04 20:07:49,199 - werkzeug - INFO - 192.168.77.64 - - [04/Mar/2025 20:07:49] "[33mPOST /api/analyze HTTP/1.1[0m" 404 -
+2025-03-04 20:07:55,603 - werkzeug - INFO - 192.168.77.64 - - [04/Mar/2025 20:07:55] "[35m[1mGET /api/test_connection HTTP/1.1[0m" 500 -
+2025-03-04 20:08:01,461 - werkzeug - INFO - 192.168.77.64 - - [04/Mar/2025 20:08:01] "[35m[1mGET /api/test_connection HTTP/1.1[0m" 500 -
+2025-03-04 20:09:35,266 - werkzeug - INFO -  * Detected change in 'C:\\Users\\user\\Desktop\\company projects\\smart api trading bot\\fix_numpy_compatibility.py', reloading
+2025-03-04 20:09:35,349 - werkzeug - INFO -  * Restarting with stat
+2025-03-04 20:09:35,712 - __main__ - INFO - Starting Advanced Trading Bot
+2025-03-04 20:09:37,224 - app - ERROR - Error initializing API: numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject
+2025-03-04 20:09:37,236 - werkzeug - WARNING -  * Debugger is active!
+2025-03-04 20:09:37,254 - werkzeug - INFO -  * Debugger PIN: 256-174-949
+2025-03-04 20:09:38,043 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-03-04 20:09:38,045 - werkzeug - INFO -  * Running on http://192.168.77.64:5000/ (Press CTRL+C to quit)
+2025-03-04 20:09:54,032 - werkzeug - INFO - 192.168.77.64 - - [04/Mar/2025 20:09:54] "GET / HTTP/1.1" 200 -
+2025-03-04 20:09:54,192 - werkzeug - INFO - 192.168.77.64 - - [04/Mar/2025 20:09:54] "GET /api/status HTTP/1.1" 200 -
+2025-03-04 20:10:00,496 - werkzeug - INFO - 192.168.77.64 - - [04/Mar/2025 20:10:00] "[35m[1mGET /api/test_connection HTTP/1.1[0m" 500 -
+2025-03-04 20:10:04,095 - werkzeug - INFO - 192.168.77.64 - - [04/Mar/2025 20:10:04] "GET / HTTP/1.1" 200 -
+2025-03-04 20:10:04,198 - werkzeug - INFO - 192.168.77.64 - - [04/Mar/2025 20:10:04] "GET /api/status HTTP/1.1" 200 -
+2025-03-04 20:11:51,837 - werkzeug - INFO -  * Detected change in 'C:\\Users\\user\\Desktop\\company projects\\smart api trading bot\\app\\api\\smart_api_wrapper.py', reloading
+2025-03-04 20:11:51,913 - werkzeug - INFO -  * Restarting with stat
+2025-03-04 20:11:52,290 - __main__ - INFO - Starting Advanced Trading Bot
+2025-03-04 20:11:53,831 - app - ERROR - Error initializing API: numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject
+2025-03-04 20:11:53,843 - werkzeug - WARNING -  * Debugger is active!
+2025-03-04 20:11:53,868 - werkzeug - INFO -  * Debugger PIN: 256-174-949
+2025-03-04 20:11:54,490 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-03-04 20:11:54,490 - werkzeug - INFO -  * Running on http://192.168.77.64:5000/ (Press CTRL+C to quit)
+2025-03-04 20:12:42,001 - werkzeug - INFO -  * Detected change in 'C:\\Users\\user\\Desktop\\company projects\\smart api trading bot\\app\\__init__.py', reloading
+2025-03-04 20:12:42,072 - werkzeug - INFO -  * Restarting with stat
+2025-03-04 20:12:42,387 - __main__ - INFO - Starting Advanced Trading Bot
+2025-03-04 20:12:43,802 - app - ERROR - Error initializing API: numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject
+2025-03-04 20:12:43,815 - werkzeug - WARNING -  * Debugger is active!
+2025-03-04 20:12:43,831 - werkzeug - INFO -  * Debugger PIN: 256-174-949
+2025-03-04 20:12:44,448 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-03-04 20:12:44,449 - werkzeug - INFO -  * Running on http://192.168.77.64:5000/ (Press CTRL+C to quit)
+2025-03-04 20:17:54,995 - werkzeug - INFO - 192.168.77.64 - - [04/Mar/2025 20:17:54] "GET / HTTP/1.1" 200 -
+2025-03-04 20:17:55,097 - werkzeug - INFO - 192.168.77.64 - - [04/Mar/2025 20:17:55] "GET /api/status HTTP/1.1" 200 -
+2025-03-04 20:17:57,168 - werkzeug - INFO - 192.168.77.64 - - [04/Mar/2025 20:17:57] "GET / HTTP/1.1" 200 -
+2025-03-04 20:17:57,270 - werkzeug - INFO - 192.168.77.64 - - [04/Mar/2025 20:17:57] "GET /api/status HTTP/1.1" 200 -
+2025-03-04 20:18:12,251 - werkzeug - INFO - 192.168.77.64 - - [04/Mar/2025 20:18:12] "[33mPOST /api/analyze HTTP/1.1[0m" 404 -
+2025-03-05 02:06:25,213 - __main__ - INFO - Starting Advanced Trading Bot
+2025-03-05 02:06:27,462 - app - ERROR - Error initializing API: numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject
+2025-03-05 02:06:27,496 - werkzeug - INFO -  * Restarting with stat
+2025-03-05 02:06:27,809 - __main__ - INFO - Starting Advanced Trading Bot
+2025-03-05 02:06:28,947 - app - ERROR - Error initializing API: numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject
+2025-03-05 02:06:28,962 - werkzeug - WARNING -  * Debugger is active!
+2025-03-05 02:06:28,984 - werkzeug - INFO -  * Debugger PIN: 256-174-949
+2025-03-05 02:06:30,975 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-03-05 02:06:30,977 - werkzeug - INFO -  * Running on http://192.168.37.64:5000/ (Press CTRL+C to quit)
+2025-03-05 02:06:47,202 - werkzeug - INFO - 192.168.37.64 - - [05/Mar/2025 02:06:47] "GET / HTTP/1.1" 200 -
+2025-03-05 02:06:47,767 - werkzeug - INFO - 192.168.37.64 - - [05/Mar/2025 02:06:47] "GET /api/status HTTP/1.1" 200 -
+2025-03-05 02:06:47,782 - werkzeug - INFO - 192.168.37.64 - - [05/Mar/2025 02:06:47] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-05 02:07:06,893 - werkzeug - INFO - 192.168.37.64 - - [05/Mar/2025 02:07:06] "GET /api/status HTTP/1.1" 200 -
+2025-03-05 02:07:15,816 - werkzeug - INFO - 192.168.37.64 - - [05/Mar/2025 02:07:15] "GET /api/status HTTP/1.1" 200 -
+2025-03-05 02:07:17,358 - werkzeug - INFO - 192.168.37.64 - - [05/Mar/2025 02:07:17] "GET /api/status HTTP/1.1" 200 -
+2025-03-05 02:07:30,605 - werkzeug - INFO - 192.168.37.64 - - [05/Mar/2025 02:07:30] "[35m[1mPOST /api/analyze HTTP/1.1[0m" 500 -
+2025-03-05 02:07:48,094 - werkzeug - INFO - 192.168.37.64 - - [05/Mar/2025 02:07:48] "GET /api/status HTTP/1.1" 200 -
+2025-03-05 02:08:18,103 - werkzeug - INFO - 192.168.37.64 - - [05/Mar/2025 02:08:18] "GET /api/status HTTP/1.1" 200 -
+2025-03-05 02:08:48,099 - werkzeug - INFO - 192.168.37.64 - - [05/Mar/2025 02:08:48] "GET /api/status HTTP/1.1" 200 -
+2025-03-05 02:09:18,102 - werkzeug - INFO - 192.168.37.64 - - [05/Mar/2025 02:09:18] "GET /api/status HTTP/1.1" 200 -

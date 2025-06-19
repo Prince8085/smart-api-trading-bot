@@ -1,0 +1,10 @@
+2025-03-03 14:08:17,406 - __main__ - INFO - Starting installation of SmartAPI and dependencies
+2025-03-03 14:08:17,406 - __main__ - INFO - Installing base dependencies
+2025-03-03 14:08:17,407 - __main__ - INFO - Running: pip install pip --upgrade
+2025-03-03 14:08:23,235 - __main__ - ERROR - Command failed with return code 1
+2025-03-03 14:08:23,236 - __main__ - ERROR - 
+2025-03-03 14:08:23,236 - __main__ - ERROR - [notice] A new release of pip is available: 24.3.1 -> 25.0.1
+2025-03-03 14:08:23,237 - __main__ - ERROR - [notice] To update, run: python.exe -m pip install --upgrade pip
+2025-03-03 14:08:23,238 - __main__ - ERROR - ERROR: To modify pip, please run the following command:
+2025-03-03 14:08:23,238 - __main__ - ERROR - C:\Users\user\Desktop\company projects\smart api trading bot\venv\Scripts\python.exe -m pip install pip --upgrade
+2025-03-03 14:08:23,240 - __main__ - ERROR - Failed to install pip --upgrade

@@ -1,0 +1,24 @@
+flask==2.0.1
+pandas==1.3.3
+numpy>=1.26.0,<2.1.0  # Updated to satisfy all dependencies
+scikit-learn==1.6.1
+tensorflow-cpu==2.18.0  # Use tensorflow-cpu instead of standard tensorflow
+matplotlib==3.4.3
+seaborn==0.11.2
+requests==2.26.0
+beautifulsoup4==4.10.0
+nltk==3.6.5
+transformers==4.12.0
+torch==1.10.0
+smartapi-python==1.5.5
+python-dotenv==0.19.1
+schedule==1.1.0
+newsapi-python==0.2.6
+groq==0.4.0
+plotly==6.0.0
+ta-lib
+yfinance==0.1.70
+pyotp==2.9.0
+werkzeug<2.1.0
+logzero
+websocket

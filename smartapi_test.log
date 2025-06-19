@@ -1,0 +1,5 @@
+2025-03-04 18:37:33,912 - __main__ - INFO - Testing Smart API connection
+2025-03-04 18:37:37,169 - __main__ - INFO - API Key: 9gagZWXo
+2025-03-04 18:37:37,169 - __main__ - INFO - Client Code: angleone
+2025-03-04 18:37:42,422 - __main__ - INFO - Login response:
+2025-03-04 18:37:42,422 - __main__ - INFO - {'status': False, 'message': 'Invalid totp', 'errorcode': 'AB1050', 'data': None}

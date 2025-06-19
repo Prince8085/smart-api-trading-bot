@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Trading Bot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-radius: 5px;
+        }
+        .error {
+            background-color: #ffebee;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 15px;
+            background-color: #f9f9f9;
+        }
+        .setup-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e3f2fd;
+            border-radius: 5px;
+        }
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0,0,0,.3);
+            border-radius: 50%;
+            border-top-color: #4CAF50;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .stock-card {
+            flex: 0 0 calc(33.33% - 20px);
+            margin: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .buy {
+            background-color: #e8f5e9;
+        }
+        .sell {
+            background-color: #ffebee;
+        }
+        .hold {
+            background-color: #fff8e1;
+        }
+        .stock-grid {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Advanced Trading Bot</h1>
+        
+        <div class="status" id="status">
+            Checking status...
+        </div>
+        
+        <div class="setup-section" id="setupSection" style="display: none;">
+            <h2>API Setup</h2>
+            <p>To use the trading bot, you need to set up your Angel One API credentials:</p>
+            <ol>
+                <li>Make sure your API_KEY, SECRET_KEY, and CLIENT_CODE are set in the .env file</li>
+                <li>Set up TOTP authentication for Angel One</li>
+                <li>Run the update_totp.py script to generate a fresh TOTP</li>
+            </ol>
+            <button id="refreshStatus">Refresh Status</button>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <button id="testConnection">Test API Connection</button>
+            <button id="startBot" disabled>Start Trading Bot</button>
+            <button id="stopBot" disabled>Stop Trading Bot</button>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <h2>Stock Analysis</h2>
+            <input type="text" id="symbol" placeholder="Enter stock symbol (e.g., RELIANCE)">
+            <button id="analyzeStock">Analyze</button>
+            
+            <div id="analysisResult" style="margin-top: 10px;"></div>
+        </div>
+        
+        <div class="card" style="margin-top: 20px;">
+            <h2>Watchlist</h2>
+            <p>Default watchlist: RELIANCE, INFY, TCS, HDFCBANK, ICICIBANK, SBIN, TATAMOTORS, WIPRO, AXISBANK, BAJFINANCE</p>
+            <div id="watchlistResults" class="stock-grid"></div>
+        </div>
+    </div>
+
+    <script>
+        // Check status when page loads
+        window.onload = function() {
+            checkStatus();
+        };
+        
+        // Check bot status
+        function checkStatus() {
+            fetch('/api/status')
+                .then(response => response.json())
+                .then(data => {
+                    const statusDiv = document.getElementById('status');
+                    if (data.api_connected) {
+                        statusDiv.innerHTML = 'Status: Connected to API';
+                        statusDiv.className = 'status';
+                        document.getElementById('startBot').disabled = false;
+                        document.getElementById('setupSection').style.display = 'none';
+                    } else {
+                        statusDiv.innerHTML = 'Status: API not connected';
+                        statusDiv.className = 'status error';
+                        document.getElementById('setupSection').style.display = 'block';
+                    }
+                    
+                    // Update watchlist if available
+                    if (data.analyzed_stocks) {
+                        updateWatchlist(data.analyzed_stocks);
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('status').innerHTML = 'Error checking status: ' + error;
+                    document.getElementById('status').className = 'status error';
+                });
+        }
+        
+        // Refresh status
+        document.getElementById('refreshStatus').addEventListener('click', function() {
+            checkStatus();
+        });
+        
+        // Test API connection
+        document.getElementById('testConnection').addEventListener('click', function() {
+            document.getElementById('status').innerHTML = '<div class="loading"></div> Testing connection...';
+            
+            fetch('/api/test_connection')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'connected') {
+                        document.getElementById('status').innerHTML = 'Connected to API as: ' + data.user;
+                        document.getElementById('status').className = 'status';
+                        document.getElementById('startBot').disabled = false;
+                        document.getElementById('setupSection').style.display = 'none';
+                    } else {
+                        document.getElementById('status').innerHTML = 'Error: ' + data.error;
+                        document.getElementById('status').className = 'status error';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('status').innerHTML = 'Error testing connection: ' + error;
+                    document.getElementById('status').className = 'status error';
+                });
+        });
+        
+        // Analyze stock
+        document.getElementById('analyzeStock').addEventListener('click', function() {
+            const symbol = document.getElementById('symbol').value;
+            if (!symbol) {
+                alert('Please enter a stock symbol');
+                return;
+            }
+            
+            document.getElementById('analysisResult').innerHTML = '<div class="loading"></div> Analyzing ' + symbol + '...';
+            
+            fetch('/api/analyze', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ symbol: symbol }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('analysisResult').innerHTML = 'Error: ' + data.error;
+                } else {
+                    let result = '<div class="card">';
+                    result += '<h3>Analysis Result for ' + data.symbol + '</h3>';
+                    result += '<p>Trade Direction: <strong>' + data.trade_direction + '</strong></p>';
+                    result += '<p>Confidence Score: <strong>' + (data.confidence_score * 100).toFixed(2) + '%</strong></p>';
+                    
+                    // Add technical indicators summary
+                    if (data.technical_indicators && data.technical_indicators.summary) {
+                        result += '<p><strong>Technical Analysis:</strong> ' + data.technical_indicators.summary + '</p>';
+                    }
+                    
+                    // Add option chain summary
+                    if (data.option_chain_summary) {
+                        result += '<p><strong>Option Chain:</strong> ' + data.option_chain_summary + '</p>';
+                    }
+                    
+                    // Add news sentiment
+                    if (data.news_sentiment) {
+                        result += '<p><strong>News Sentiment:</strong> ' + data.news_sentiment + '</p>';
+                    }
+                    
+                    result += '</div>';
+                    
+                    document.getElementById('analysisResult').innerHTML = result;
+                }
+            })
+            .catch(error => {
+                document.getElementById('analysisResult').innerHTML = 'Error analyzing stock: ' + error;
+            });
+        });
+        
+        // Start trading bot
+        document.getElementById('startBot').addEventListener('click', function() {
+            fetch('/api/start_trading', {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('status').innerHTML = 'Trading bot started';
+                    document.getElementById('startBot').disabled = true;
+                    document.getElementById('stopBot').disabled = false;
+                } else {
+                    document.getElementById('status').innerHTML = 'Error: ' + data.error;
+                    document.getElementById('status').className = 'status error';
+                }
+            })
+            .catch(error => {
+                document.getElementById('status').innerHTML = 'Error starting bot: ' + error;
+                document.getElementById('status').className = 'status error';
+            });
+        });
+        
+        // Stop trading bot
+        document.getElementById('stopBot').addEventListener('click', function() {
+            fetch('/api/stop_trading', {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('status').innerHTML = 'Trading bot stopped';
+                    document.getElementById('startBot').disabled = false;
+                    document.getElementById('stopBot').disabled = true;
+                } else {
+                    document.getElementById('status').innerHTML = 'Error: ' + data.error;
+                    document.getElementById('status').className = 'status error';
+                }
+            })
+            .catch(error => {
+                document.getElementById('status').innerHTML = 'Error stopping bot: ' + error;
+                document.getElementById('status').className = 'status error';
+            });
+        });
+        
+        // Update watchlist display
+        function updateWatchlist(stocks) {
+            const watchlistDiv = document.getElementById('watchlistResults');
+            if (Object.keys(stocks).length === 0) {
+                watchlistDiv.innerHTML = '<p>No stocks analyzed yet</p>';
+                return;
+            }
+            
+            let html = '';
+            
+            for (const symbol in stocks) {
+                const stock = stocks[symbol];
+                const confidencePercent = (stock.confidence_score * 100).toFixed(1);
+                
+                let cardClass = 'stock-card hold';
+                if (stock.trade_direction === 'BUY') {
+                    cardClass = 'stock-card buy';
+                } else if (stock.trade_direction === 'SELL') {
+                    cardClass = 'stock-card sell';
+                }
+                
+                html += `
+                    <div class="${cardClass}">
+                        <h3>${symbol}</h3>
+                        <p>Signal: <strong>${stock.trade_direction}</strong></p>
+                        <p>Confidence: <strong>${confidencePercent}%</strong></p>
+                    </div>
+                `;
+            }
+            
+            watchlistDiv.innerHTML = html;
+        }
+        
+        // Refresh status every 30 seconds
+        setInterval(checkStatus, 30000);
+    </script>
+</body>
+</html>
