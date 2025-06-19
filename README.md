@@ -106,8 +106,8 @@ Contributions are welcome!
 
 ## 📬 Contact
 
-- **Author**: [Your Name](mailto:kachhwahaprince@gmail.com)
-- **GitHub**: [your-username](https://github.com/Prince8085)
+- **Author**: [Prince Kachhwaha](mailto:kachhwahaprince@gmail.com)
+- **GitHub**: [Prince8085](https://github.com/Prince8085)
 
 ---
 
